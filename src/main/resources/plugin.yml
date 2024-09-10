@@ -1,0 +1,5 @@
+name: PerrokEssentials
+version: '1.0'
+main: fr.pqndaa.perrokEssentials.PerrokEssentials
+api-version: '1.21'
+authors: [ PQNDAA ]
