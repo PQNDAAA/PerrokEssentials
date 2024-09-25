@@ -1,2 +1,8 @@
-welcome-message: "Bienvenue %player% sur le serveur Sainte Catherine \n Vous pouvez consulter les nouveautés en cliquant ici"
+welcome-message: "Bienvenue %player% sur le serveur Sainte Catherine"
+join-message: "%player% a rejoint le serveur Sainte Catherine"
+quit-message: "%player% vient de quitter le serveur"
+news-message: "Vous pouvez consulter les nouveautés en cliquant ici"
+noPlayer-message: "Vous devez être un joueur pour éxéctuter cette commande."
+noOp-message: "Vous n'avez pas la permission d'éxécuter cette commande."
 start-money-amount: 200
+server-spawn:

@@ -48,9 +48,26 @@ processResources {
     }
 }
 
-task CopyToServer(type: Copy){
+//AUTOMATISATION TASKS
+
+task CopyJarToServer(type: Copy){
     from tasks.named('jar').get().archiveFile
     into "C:/DevServer/plugins"
 }
+task CopyConfigToServer(type: Copy){
+    from "E:/Minecraft Development Java/PerrokEssentials/src/main/resources/config.yml"
+    into "C:/DevServer/plugins/PerrokEssentials"
+}
+task CopyJarToScoreboard(type: Copy){
+    from tasks.named('jar').get().archiveFile
+    into "E:/Minecraft Development Java/PerrokScoreboard/build/libs"
+}
+task CopyJarToJobs(type: Copy){
+    from tasks.named('jar').get().archiveFile
+    into "E:/Minecraft Development Java/PerrokJobs/build/libs"
+}
 
-build.finalizedBy(CopyToServer);
+build.finalizedBy(CopyJarToServer);
+build.finalizedBy(CopyJarToScoreboard);
+build.finalizedBy(CopyJarToJobs);
+//build.finalizedBy(CopyConfigToServer);
