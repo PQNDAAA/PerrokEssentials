@@ -60,8 +60,8 @@ public class Constants {
         return plugin.getConfig().getString("news-message");
     }
 
-    public Integer getStartMoneyAmount(){
-        return plugin.getConfig().getInt("start-money-amount");
+    public double getStartMoneyAmount(){
+        return plugin.getConfig().getDouble("start-money-amount");
     }
 
     public void reduceMoneyAmount(Player player, Integer amount) {
@@ -78,13 +78,13 @@ public class Constants {
         }
     }
 
-    public void addMoneyAmount(Player player, Integer moneyAmount) {
+    public void addMoneyAmount(Player player, double moneyAmount) {
         File playerFile = playerFile(player,plugin);
 
         if (playerFile.exists()) {
             try {
                 FileConfiguration playerConfig = getPlayerConfig(player);
-                playerConfig.set("playerMoney", playerConfig.getInt("playerMoney") + moneyAmount);
+                playerConfig.set("playerMoney", playerConfig.getDouble("playerMoney") + moneyAmount);
                 playerConfig.save(playerFile);
             } catch (Exception e) {
                 throw new RuntimeException(e);
@@ -106,9 +106,10 @@ public class Constants {
         return player.getUniqueId().toString();
     }
 
-    public Integer getMoneyAmount(Player player) {
+    public double getMoneyAmount(Player player) {
         FileConfiguration playerConfig = getPlayerConfig(player);
-        return playerConfig.getInt("playerMoney");
+        double money  = Math.round(playerConfig.getDouble("playerMoney") * 100.0) / 100.0;
+        return money;
     }
 
     public Integer getPlayerDeath(Player player) {

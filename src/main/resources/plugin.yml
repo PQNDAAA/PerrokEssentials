@@ -22,3 +22,6 @@ commands:
   reloadpl:
     description: Redémarrer un plugin spécifique.
     usage: /<command> <plugin>
+  spawnmob:
+    description:
+    usage: /<command>

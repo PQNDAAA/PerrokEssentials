@@ -14,7 +14,6 @@ import java.util.List;
 
 public class ItemUtils {
 
-
     public ItemStack createItem(ItemStack item, String displayName, List<String> loreList,String tagName,String tagValue){
         ItemStack targetItem = item;
         ItemMeta meta = targetItem.getItemMeta();
@@ -25,6 +24,7 @@ public class ItemUtils {
         addCustomTag(targetItem,tagName,tagValue);
         return targetItem;
     }
+
     public ItemStack getPlayerSkull(Player player, ItemStack item){
         SkullMeta skullMeta = (SkullMeta) item.getItemMeta();
         skullMeta.setOwningPlayer(player);
@@ -59,7 +59,17 @@ public class ItemUtils {
         return lore;
     }
 
-    public void editItemLore(ItemStack item, ArrayList<String> lines) {
+    public ItemStack setCustomModelData(ItemStack item,int value){
+        ItemMeta meta = item.getItemMeta();
+        if(meta != null) {
+            meta.setCustomModelData(value);
+            item.setItemMeta(meta);
+            return item;
+        }
+        return null;
+    }
+
+    public ItemStack editItemLore(ItemStack item, ArrayList<String> lines) {
         ItemMeta meta = item.getItemMeta();
         if (meta != null) {
 
@@ -74,25 +84,30 @@ public class ItemUtils {
             }
             meta.setLore(currentLore);
             item.setItemMeta(meta);
-        }
-    }
-
-    public ItemMeta clearLore(ItemStack item){
-        ItemMeta meta = item.getItemMeta();
-        if(meta != null){
-            meta.setLore(new ArrayList<>());
-            return meta;
+            return item;
         }
         return null;
     }
 
-    public void newLoreItem(ItemStack item, ArrayList<String> lines){
+    public ItemStack clearLore(ItemStack item){
+        ItemMeta meta = item.getItemMeta();
+        if(meta != null){
+            meta.setLore(new ArrayList<>());
+            item.setItemMeta(meta);
+            return item;
+        }
+        return null;
+    }
+
+    public ItemStack newLoreItem(ItemStack item, ArrayList<String> lines){
         ItemMeta meta = item.getItemMeta();
         if(meta != null){
             List<String> lore = createLore(lines);
             meta.setLore(lore);
             item.setItemMeta(meta);
+            return item;
         }
+        return null;
     }
 
     public String getDisplayName(ItemStack item){

@@ -28,7 +28,7 @@ public class MoneyCommand implements CommandExecutor {
         }
         Player p = (Player) commandSender;
         if (strings.length < 1) {
-            p.sendMessage(ChatColor.RED + p.getName() + ": " + this.constants.getMoneyAmount(p) + "$");
+            p.sendMessage("➤ Votre solde actuel est de: " + this.constants.getMoneyAmount(p) +"\uDB81\uDC99" + ".");
             return true;
         } else if (strings.length > 1) {
             p.sendMessage(this.constants.getErrorPrefix() + " /money <joueur>.");
@@ -40,7 +40,7 @@ public class MoneyCommand implements CommandExecutor {
             if (targetPlayer == null) {
                 OfflinePlayer offlinePlayer = plugin.getServer().getOfflinePlayer(targetPlayerString);
                 if (offlinePlayer.hasPlayedBefore()) {
-                    p.sendMessage(ChatColor.RED + offlinePlayer.getName() + ": " + this.constants.getMoneyAmount(offlinePlayer.getPlayer()) + "$");
+                    p.sendMessage("➤ Le solde actuel de "+ offlinePlayer.getName() + " est de: " + this.constants.getMoneyAmount(offlinePlayer.getPlayer()) +"\uDB81\uDC99" + ".");
                     return true;
                 } else {
                     p.sendMessage(this.constants.getErrorPrefix() + " " +
@@ -48,7 +48,7 @@ public class MoneyCommand implements CommandExecutor {
                     return true;
                 }
             } else {
-                p.sendMessage(ChatColor.RED + targetPlayer.getName() + ": " + this.constants.getMoneyAmount(targetPlayer) + "$");
+                p.sendMessage("➤ Le solde actuel de " + targetPlayer.getName() + " est de: " + this.constants.getMoneyAmount(targetPlayer) +"\uDB81\uDC99" + ".");
                 return true;
             }
         }

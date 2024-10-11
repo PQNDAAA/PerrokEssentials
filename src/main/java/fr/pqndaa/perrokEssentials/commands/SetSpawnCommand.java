@@ -35,7 +35,7 @@ public class SetSpawnCommand implements CommandExecutor {
                 plugin.getConfig().set("server-spawn", p.getLocation());
                 plugin.saveConfig();
 
-                p.sendMessage(ChatColor.GREEN + "Le spawn a bien été enregistré avec succés en "+ ChatColor.RED + "x" + Math.round(p.getLocation().getX()) + ", y" +
+                p.sendMessage(ChatColor.GREEN + "➤ Le spawn a bien été enregistré avec succés en "+ ChatColor.RED + "x" + Math.round(p.getLocation().getX()) + ", y" +
                         Math.round(p.getLocation().getY()) + ", z" + Math.round(p.getLocation().getZ()));
                 return true;
             }

@@ -37,18 +37,24 @@ public class SpawnCommand implements CommandExecutor {
             p.sendMessage(this.constants.getErrorPrefix() + " /spawn");
             return true;
         } else {
+            Location spawnLocation = plugin.getConfig().getLocation("server-spawn");
+
+            if(spawnLocation == null) {
+                p.sendMessage(this.constants.getErrorPrefix() + " Le spawn n'est pas encore défini.");
+                return true;
+            }
+
             new BukkitRunnable() {
                 int timer = 3;
-                Location spawnLocation = plugin.getConfig().getLocation("server-spawn");
 
                 @Override
                 public void run() {
-                    if(timer > 0){
-                        p.sendMessage(ChatColor.GREEN+"Vous allez être téléporté au spawn dans " + timer);
+                    if (timer > 0) {
+                        p.sendMessage(ChatColor.GREEN + "➤ Vous allez être téléporté au spawn dans " + timer);
                         timer--;
-                    } else{
+                    } else {
                         p.teleport(spawnLocation);
-                        p.sendMessage(ChatColor.GREEN + "Vous avez bien été teleporté au spawn du serveur.");
+                        p.sendMessage(ChatColor.GREEN + "➤ Vous avez bien été teleporté au spawn du serveur.");
                         cancel();
                     }
                 }

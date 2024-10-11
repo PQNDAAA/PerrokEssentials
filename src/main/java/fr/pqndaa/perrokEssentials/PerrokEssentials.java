@@ -2,27 +2,27 @@ package fr.pqndaa.perrokEssentials;
 
 import fr.pqndaa.perrokEssentials.commands.CommandManager;
 import fr.pqndaa.perrokEssentials.events.EventManager;
+import fr.pqndaa.perrokEssentials.utils.CharRepo;
 import fr.pqndaa.perrokEssentials.utils.Constants;
 import fr.pqndaa.perrokEssentials.utils.ItemUtils;
+import fr.pqndaa.perrokEssentials.utils.UtilManager;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.EntityType;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 
 public final class PerrokEssentials extends JavaPlugin {
 
-    private Constants constants;
-    private ItemUtils itemUtils;
+    private UtilManager utilManager;
 
     @Override
     public void onEnable() {
         saveDefaultConfig();
 
-        constants = new Constants(this);
-        itemUtils = new ItemUtils();
-
-        new EventManager(this,constants);
-        new CommandManager(this, constants);
+        utilManager = new UtilManager(this);
+        new EventManager(this,utilManager.getConstants());
+        new CommandManager(this, utilManager.getConstants());
 
         createPlayersFolder();
 
@@ -42,8 +42,5 @@ public final class PerrokEssentials extends JavaPlugin {
         }
     }
 
-    public Constants getConstants() {
-        return constants;
-    }
-    public ItemUtils getItemUtils() {return itemUtils;}
+    public UtilManager getUtilManager() {return utilManager;}
 }

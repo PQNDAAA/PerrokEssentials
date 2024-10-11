@@ -45,7 +45,7 @@ public class PayCommand implements CommandExecutor {
            } else {
                this.constants.addMoneyAmount(targetPlayer, amount);
                this.constants.reduceMoneyAmount(p, amount);
-               p.sendMessage("Vous avez donné "+ amount + "$ à " + targetPlayer.getName() + ".");
+               p.sendMessage("➤ Vous avez donné "+ amount + "$ à " + targetPlayer.getName() + ".");
                return true;
            }
         }
